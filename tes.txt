@@ -1,0 +1,14 @@
+Add-Type -AssemblyName PresentationFramework
+
+function Show-MessageBox {
+    param (
+        [string]$Message,
+        [string]$Title = "Windows PowerShell",
+        [System.Windows.MessageBoxButton]$Button = [System.Windows.MessageBoxButton]::OK,
+        [System.Windows.MessageBoxImage]$Icon = [System.Windows.MessageBoxImage]::Information
+    )
+    [System.Windows.MessageBox]::Show($Message, $Title, $Button, $Icon)
+}
+
+
+Show-MessageBox -Message "Windows PowerShell has been successfully updated."
