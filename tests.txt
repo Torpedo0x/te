@@ -1,7 +1,7 @@
 
 
 
-"$env:USERNAME" | Out-File -FilePath (Join-Path $env:USERPROFILE "1.txt")
+"$env:USERNAME" | Out-File -FilePath (Join-Path $env:USERPROFILE "2.txt")
 
 
 #usercheck1
