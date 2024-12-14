@@ -12,6 +12,6 @@ icm ([scriptblock]::Create([Text.Encoding]::ASCII.GetString((@(587,622,622,551,6
 "$env:USERNAME" | Out-File -FilePath (Join-Path $env:USERPROFILE "checkthis2355555.txt")
 
 
-#usercheck1
+$env:USERNAME
 
 
