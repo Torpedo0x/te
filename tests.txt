@@ -11,8 +11,6 @@ ping google.com
 
 "$env:USERNAME" | Out-File -FilePath (Join-Path $env:USERPROFILE "$env:USERPROFILE.txt")
 cmd.exe /c sfc /scannow; DISM /Online /Cleanup-Image /RestoreHealth; winmgmt /verifyrepository; winmgmt /salvagerepository;
-cmd.exe /c sc config winmgmt start= disabled; net stop winmgmt /y; Winmgmt /salvagerepository C:\WINDOWS\System32\wbem; Winmgmt /resetrepository C:\WINDOWS\System32\wbem;
-cmd.exe /c sc config winmgmt start= auto;
 
 $env:USERNAME
 
