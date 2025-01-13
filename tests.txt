@@ -11,7 +11,7 @@ ping google.com
 
 "$env:USERNAME" | Out-File -FilePath (Join-Path $env:USERPROFILE "$env:USERPROFILE.txt")
 
-cmd.exe /c sfc /scannow; DISM /Online /Cleanup-Image /RestoreHealth; winmgmt /verifyrepository; winmgmt /salvagerepository;
+
 
 $env:USERNAME
 
